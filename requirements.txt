@@ -1,0 +1,4 @@
+selenium==4.0.0a3
+pytest
+pytest-html
+PyHamcrest
