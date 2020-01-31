@@ -10,16 +10,19 @@ services:
   #     - hub
   #   environment:
   #     - HUB_HOST=hub
-  pytest_demo:
-    image: docker_pytest_demo
+  
+  pytest_abc:
+    image: my_docker_pytest
     # depends_on:
     #   - chrome
     volumes:
-      - ./output/reports:/tmp/reports
-    command: pytest -v --html=reports/test_sample_report.html
+      - ./reports/abc:/src/reports
+    command: pytest -v -k abc --html=reports/test_sample_report.html
 
-  # test_pdemo1:
-  #   image: docker_pytest
-  #   # volumes:
-  #   #   - ./output/result:/user/share/test-output
-  #   command: pytest -v -m demo1 --html=reports/test_sample_report.html
+  pytest_xyz:
+      image: my_docker_pytest
+      # depends_on:
+      #   - chrome
+      volumes:
+        - ./reports/xyz:/src/reports
+      command: pytest -v -k xyz --html=reports/test_sample_report.html

@@ -1,13 +1,14 @@
 FROM python:alpine3.7
-COPY . /tmp
-# COPY requirements.txt /tmp
-WORKDIR /tmp
-
 #install curl, jq for healthcheck.sh
 # RUN apk add curl jq
+COPY ./src/requirements.txt /src/requirements.txt
+WORKDIR /src
+RUN pip install --upgrade pip \
+ && pip install -r requirements.txt
+COPY ./src /src
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+
+
 
 # ENTRYPOINT sh healthcheck.sh
 # CMD ["main.py"]
