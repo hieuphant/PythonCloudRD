@@ -1,28 +1,28 @@
 version: "3"
 services:
-  # hub:
-  #   image: selenium/hub:latest
-  #   ports:
-  #     - "4444:4444"
-  # chrome:
-  #   image: selenium/node-chrome
-  #   depends_on:
-  #     - hub
-  #   environment:
-  #     - HUB_HOST=hub
+  hub:
+    image: selenium/hub:latest
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
   
-  pytest_abc:
-    image: my_docker_pytest
-    # depends_on:
-    #   - chrome
-    volumes:
-      - ./reports/abc:/src/reports
-    command: pytest -v -k abc --html=reports/test_sample_report.html
+  # pytest_abc:
+  #   image: my_docker_pytest
+  #   # depends_on:
+  #   #   - chrome
+  #   volumes:
+  #     - ./reports/src/reports
+  #   command: pytest -v -k abc --html=reports/test_abc_report.html
 
-  pytest_xyz:
-      image: my_docker_pytest
-      # depends_on:
-      #   - chrome
-      volumes:
-        - ./reports/xyz:/src/reports
-      command: pytest -v -k xyz --html=reports/test_sample_report.html
+  # pytest_xyz:
+  #     image: my_docker_pytest
+  #     # depends_on:
+  #     #   - chrome
+  #     volumes:
+  #       - ./reports:/src/reports
+  #     command: pytest -v -k xyz --html=reports/test_xyz_report.html

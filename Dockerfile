@@ -6,9 +6,4 @@ WORKDIR /src
 RUN pip install --upgrade pip \
  && pip install -r requirements.txt
 COPY ./src /src
-
-
-
-
 # ENTRYPOINT sh healthcheck.sh
-# CMD ["main.py"]
